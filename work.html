@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-GB"dir="ltr">
+<head>
+   <title>Kevin Calc</title>
+    <link rel="stylesheet" href="work.css">
+   <style>
+    .total{
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      background-color:white;
+      color: (158, 218, 141, 0.474);
+      font-size: 22px;
+      margin:5px;
+      width: 200px;
+      height: 25px;
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+      height: 80px;
+      width: 100%;
+      border-radius: 20px;
+      /*flex-direction: center;*/
+    }
+    
+   </style> 
+</head>
+<script> 
+   console.log("test")
+</script>
+<body>
+<h1> Kasio Calculator 456hz</h1>
+<h2 style = "font-style:Georgia;">What would you like to calculate?</h2>
+<body style = "background-color: #8aff8f ;">
+<div class = "calculator">
+<div id="total" class="total" ></div>
+<!--<input id="inputOne" type = "number"></type>
+<input id = "inputTwo" type = "number"></type>-->
+<div>
+ <button class ="symbol-btn" onclick="handleButton(event)">+</button>
+ <button class ="symbol-btn" onclick="handleButton(event)">-</button>
+ <button class ="symbol-btn" onclick="handleButton(event)">÷</button>
+ <button class ="symbol-btn" onclick="handleButton(event)">x</button>
+ <button class ="symbol-btn" onclick="handleButton(event)">²</button>
+ <button class ="symbol-btn" onclick="handleButton(event)">√</button>
+ <button class ="symbol-btn" onclick="handleButton(event)">!</button>
+ <button class ="symbol-btn" onclick="handleButton(event)">M+</button>
+ <button class ="symbol-btn" onclick="handleButton(event)">Mr</button>
+ <button class ="symbol-btn" onclick="handleButton(event)">Mc</button>
+ <button class ="symbol-btn" onclick="clear()">C</button>
+ <button class ="symbol-btn" onclick="equal()">=</button>
+</div>
+<div id ="numbers" class="numbers"></div>
+</div>
+<script src="work.js">  </script>
+
+
+   
+</body>
+</html
