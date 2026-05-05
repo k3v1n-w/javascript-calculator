@@ -1,6 +1,6 @@
 # Javascript Calculator
 The project was to create a calculator using CSS, HTML and JavaScript.
-But the main aim was to create a browser based responsive calculator # # # using a design of my choice.
+But the main aim was to create a browser based responsive calculator using a design of my choice.
 Make sure that the calculator had a range of suitable functions.
 This is the design I based my calculator on.
 
