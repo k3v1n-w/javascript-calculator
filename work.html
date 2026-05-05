@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-GB"dir="ltr">
+<head>
+    <title>Kevin Calc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="work.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Capriola&family=Syne+Mono&display=swap" rel="stylesheet">
+</head>
+<body style ="background-color: #8aff8f ;">
+    <header class="heading">
+        <h1 class ="capriola-regular"> Kasio Calculator 456hz</h1>
+        <h2 style="font-family: Arial, Helvetica, sans-serif;">What would you like to calculate?</h2>
+    </header>
+
+<div class="calculator">
+    <div id="total" class="total" ></div>
+    <div id="display" class="display" ></div>
+
+
+    <div class="top-symbol-btns">
+        <button class = "symbol-btn" onclick="displayDelete(event)" title="Delete">Del</button>
+        <button class ="symbol-btn" onclick="handleButton(event)" title="Factorial">!</button>
+        <button class ="symbol-btn" onclick="handleMemoryButton(event)" title="Memory">M+</button>
+        <button class ="symbol-btn" onclick="handleButton(event)">%</button>
+    </div>
+
+    <div class="top-symbol-btns">
+        <button class ="symbol-btn" onclick="displayclear(event)" title="Clear">C</button>
+        <button class ="symbol-btn" onclick="handleMemoryButton(event)" title="Memory Return">Mr</button>
+        <button class ="symbol-btn" onclick="handleMemoryButton(event)" title="Memory Clear">Mc</button>
+        <button class ="symbol-btn" onclick="handleButton(event)" title="Division">÷</button>
+    </div>
+
+    <div class="bottom-btns">
+        <div id ="numbers" class="numbers">
+             <button class ="symbol-btn" onclick="handleButton(event)" title="Squared">²</button>
+             <button class ="symbol-btn" onclick="handleButton(event)" title="Square Root">√</button>
+        </div>
+        <div class="right-symbol-btns">
+         <button class ="symbol-btn" onclick="handleButton(event)" title="Addition">+</button>
+         <button class ="symbol-btn" onclick="handleButton(event)" title="Subtraction">-</button>
+         <button class ="symbol-btn" onclick="handleButton(event)" title="Multiply">x</button>
+         <button class ="symbol-btn" onclick="equal(event)" title="Equal">=</button>
+        </div>
+    </div>
+
+</div>
+<script src="work.js">  </script>
+
+   
+</body>
+</html
