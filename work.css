@@ -1,46 +1,101 @@
-/*.total{
-    //display: flex;
-    justify-content: center;
-    flex-direction: center;
-}*/
-.calculator{
-    
-    margin: 1em 2em;
-    background-color: black;
-    width: 50%;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 30px;
-    border-radius: 20px;
-    background: #828282;
-    background: linear-gradient(178deg, rgba(130, 130, 130, 1) 0%, rgba(36, 27, 27, 1) 72%);
-    margin:auto;
+.heading{
+  margin: auto;
+  width: fit-content;
 }
-.btn{
-    background-color: black;
-  border: none;
-  color: gray;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-    
-}
-.symbol-btn{
-    background-color: black;
-  border: none;
-  color: #8aff8f;
-  padding: 5px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-    
+body{
+    padding: 10px
+
 
 }
+.calculator{
+    
+      box-sizing:border-box ;
+      background-color: black;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0px 4px 10px;
+      padding-top: 50px;
+      padding-bottom: 20px;
+      padding-left: 30px;
+      padding-right: 30px;
+      border-radius: 20px;
+      background: #828282;
+      background: linear-gradient(178deg, rgba(130, 130, 130, 1) 0%, rgba(36, 27, 27, 1) 72%);
+      margin:auto;
+}
+
+.top-symbol-btns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.btn{
+    background-color: black;
+    border: none;
+    color: gray;
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    flex-grow: 1;
+    flex-basis: 0;
+    
+}
+
+.symbol-btn{
+    background-color: black;
+    border: none;
+    color: #8aff8f;
+    padding: 15px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    flex-grow: 1;
+    flex-basis: 0;
+    
+}
+
+.right-symbol-btns{
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-btns{
+    display: flex;
+}
+
+.capriola-regular {
+    font-family: "Capriola", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.display{
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+      background-color:white;
+      font-size: 22px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      height: 80px;
+      border-radius: 50px;
+    }
+
+.numbers{
+    display: flex;
+    flex-wrap: wrap;
+    /*align-content: space-evenly;
+    justify-content: space-evenly;*/
+
+    /*justify-content: ;*/
+}
+
