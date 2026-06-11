@@ -47,7 +47,6 @@ function subtraction(){
 function division(){
     inputA = document.getElementById("inputOne").value
     inputB = document.getElementById("inputTwo").value
-    
     total = inputA / inputB;
     document.getElementById("total").innerText = total
     console.log(total)
@@ -72,6 +71,7 @@ function squared(abc){
     if(abc){
         tempEqual =  abc ** squareNum 
     }
+
     console.log(tempEqual)
     return tempEqual
     
@@ -223,6 +223,7 @@ function equal(e){
             break;
         case "√":
             total = squaredRoot(firstNum);
+            console.log(total)
             console.log(opX);
             break;
         case "²":
@@ -237,7 +238,7 @@ function equal(e){
             break;
     }
 
-    console.log(total);
+    console.log(total)
     displayTotal(total)
 
 }
