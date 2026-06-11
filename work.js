@@ -18,8 +18,6 @@ var buttons = []
     buttons[i].classList.add(`btn`)
     numbersContainer.appendChild(buttons[i])
     buttons[i].addEventListener('click', handleButton)
-    
-
 }
 
 
@@ -27,11 +25,9 @@ var buttons = []
     inputA = document.getElementById("inputOne").value
     inputB = document.getElementById("inputTwo").value
 
-
-    total = Number(inputA) +Number(inputB);
+    total = Number(inputA) + Number(inputB);
     document.getElementById("total").innerText = total
     console.log(total)
-    
 }
 
 function subtraction(){
@@ -41,7 +37,6 @@ function subtraction(){
     total = inputA - inputB;
     document.getElementById("total").innerText = total
     console.log(total)
-    
 }
 
 function division(){
@@ -115,13 +110,9 @@ function factorial(efg){
     }
 }
 
-//function percentage(){
-
-//}
-
 function memory(total){
     // This stores the number chosen in memory
-    if (total>0){
+    if (total > 0){
         memo = total
         console.log(memo)
     } else {
@@ -171,16 +162,14 @@ function displayTotal(total) {
     total = 0;
 }
 
-function equal(e){
+function equal(){
     //Here is where we can sort the array to solve the calculation
-    console.log(e)
-    //console.log(numbersToCalculate)
 
     //Addition
     let firstNum = ""
     let secondNum = "" // second val after operator
     let opX = ""
-    for (i=0; i < numbersToCalculate.length; i++) {
+    for (i = 0; i < numbersToCalculate.length; i++) {
         //console.log(numbersToCalculate[i])
         valX = numbersToCalculate[i]
         if (parseInt(valX) && opX.length == 0) {
@@ -245,12 +234,10 @@ function equal(e){
 
 function handleButton(e){
     //Allows the button clicked to join together
-        numbersToCalculate.push(e.target.innerText)
-        console.log(e)
-        console.log(numbersToCalculate)
-        document.getElementById("display").innerText = numbersToCalculate.join(" ")
-    
-
+    numbersToCalculate.push(e.target.innerText)
+    console.log(e)
+    console.log(numbersToCalculate)
+    document.getElementById("display").innerText = numbersToCalculate.join(" ")
 }
 
 function handleMemoryButton(e){
