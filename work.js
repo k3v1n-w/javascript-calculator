@@ -5,8 +5,9 @@ var total
 let m1 = 0
 let memo = 0
 let numbersToCalculate = []
-let dot_exists = false
-
+let dot_exists = false // flag to set to true whena decimal point is added
+let equal_pressed = false // flag to know when the forst = eval is executed
+let calc_functions_array = ['+','-','x','÷','!','Mr','Mc','M+','√','²','%','Del','=','C']
 console.log(m1)
 console.log("loaded javascript")
 
@@ -21,7 +22,6 @@ var buttons = []
     numbersContainer.appendChild(buttons[i])
     buttons[i].addEventListener('click', handleButton)
     
-
 }
 
 function displayDelete(){
@@ -79,9 +79,6 @@ function factorial(efg){
     }
 }
 
-//function percentage(){
-
-//}
 
 function memory(total){
     // This stores the number chosen in memory
@@ -108,7 +105,6 @@ function memoryReturn() {
         return true
     }
     
-
 }
 
 function memoryClear() {
@@ -124,7 +120,7 @@ function displayclear(e){
     // Function to handle Clear (C) event by emptying array and clear display
     numbersToCalculate = [];
     document.getElementById("display").innerText = ""
-
+    equal_pressed = false //release the flag to allow consecutive operations
 }
 
 function displayTotal(total) {
@@ -135,96 +131,94 @@ function displayTotal(total) {
     total = 0;
 }
 
-/*
-function decimal_Place() {
-    inputA = document.getElementById("inputOne").value
-    inputB = document.getElementById("inputTwo").value
-    if(inputA.includes(".")){
-        parseFloat(inputA)
-        console.log(inputA)
-    } else if (inputB.includes(".")){
-        parseFloat(inputB)
-        console.log(inputB)
-    } else {
-        window.alert("Your not ")
-   }
-}
-*/
 
-function equal(e){
+function equal(e) {
     //Here is where we can sort the array to solve the calculation
     console.log(e)
-    //console.log(numbersToCalculate)
+    if (!equal_pressed) { 
+        // check to prevent total being displayed shown when ever = is pressed
+    
+        //console.log(numbersToCalculate)
+        let decimal_found = false
+        let firstNum = ""
+        let secondNum = "" // second val after operator
+        let opX = ""
+        for (i=0; i < numbersToCalculate.length; i++) {
+            //console.log(numbersToCalculate[i])
+            valX = numbersToCalculate[i]
 
-    let firstNum = ""
-    let secondNum = "" // second val after operator
-    let opX = ""
-    for (i=0; i < numbersToCalculate.length; i++) {
-        //console.log(numbersToCalculate[i])
-        valX = numbersToCalculate[i]
-        // check for a decimal point
-
-        if (parseInt(valX) && opX.length == 0) {
-            //console.log(numX)
-            firstNum = firstNum + valX
-        } else if (opX.length > 0) {
-            secondNum = secondNum + valX
-        } else {
-            console.log(valX)
-            opX = valX
+            if (parseInt(valX) && opX.length == 0) {
+                firstNum = firstNum + valX
+            } else if (opX.length > 0) {
+                secondNum = secondNum + valX
+            } else {
+                if (!valX.includes(".")) {
+                    console.log(valX)
+                    opX = valX
+                } else {
+                    firstNum = firstNum + valX
+                    console.log("Decimal found")
+                }
+            }
+            
         }
-        
+
+        console.log(opX)
+        console.log(firstNum)
+        console.log(secondNum)
+    
+
+        switch (opX) {
+            case "+":
+                total = eval(firstNum+opX+secondNum)
+                console.log(opX);
+                break;
+            case "-":
+                total = eval(firstNum+opX+secondNum)
+                console.log(opX);
+                break;
+            case "x":
+                total = eval(firstNum*secondNum)
+                console.log(opX);
+                break;
+            case "÷":
+                total = eval(firstNum/secondNum)
+                console.log(opX);
+                break;
+            case "!":
+                total = factorial(firstNum)
+                console.log(opX);
+                break;
+            case "√":
+                total = squaredRoot(firstNum);
+                console.log(total)
+                console.log(opX);
+                break;
+            case "²":
+                total = squared(firstNum)
+                console.log(opX);
+                break;
+            case "%":
+                total = eval((firstNum/100) *secondNum)
+                console.log(opX)
+            case ".":
+                console.log(opX);
+                break;
+            default:
+                console.log(opX);
+                break;
+        }
+
+        console.log(total)
+        displayTotal(total)
+        equal_pressed = true
+    } else {
+        return
     }
-    //total = eval(firstNum+opX+secondNum)
-    //console.log(valX)
-    console.log(firstNum)
-    console.log(secondNum)
-   
-
-    switch (opX) {
-        case "+":
-            total = eval(firstNum+opX+secondNum)
-            console.log(opX);
-            break;
-        case "-":
-            total = eval(firstNum+opX+secondNum)
-            console.log(opX);
-            break;
-        case "x":
-            total = eval(firstNum*secondNum)
-            console.log(opX);
-            break;
-        case "÷":
-            total = eval(firstNum/secondNum)
-            console.log(opX);
-            break;
-        case "!":
-            total = factorial(firstNum)
-            console.log(opX);
-            break;
-        case "√":
-            total = squaredRoot(firstNum);
-            console.log(total)
-            console.log(opX);
-            break;
-        case "²":
-            total = squared(firstNum)
-            console.log(opX);
-            break;
-        case "%":
-            total = eval((firstNum/100) *secondNum)
-            console.log(opX)
-        default:
-            console.log(opX);
-            break;
-    }
-
-    console.log(total)
-    displayTotal(total)
-
 }
+
 function handleButton(e){
-    //Allows the button clicked to join together
+    //Allows the button clicked to join the value to the array to build the number
     console.log(e)
     
     if (e.target.innerText == ".") {
@@ -233,8 +227,11 @@ function handleButton(e){
             console.log ("dot exists")
         } else {
             return
+
+            
         }
     } else {
+        dot_exists = false
         console.log ("hello")
     }
 
