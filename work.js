@@ -1,10 +1,12 @@
 //Declare global variables
-var inputA 
-var inputB 
+//var inputA 
+//var inputB 
 var total
 let m1 = 0
 let memo = 0
 let numbersToCalculate = []
+let dot_exists = false
+
 console.log(m1)
 console.log("loaded javascript")
 
@@ -22,44 +24,6 @@ var buttons = []
 
 }
 
-
- function addition(){
-    inputA = document.getElementById("inputOne").value
-    inputB = document.getElementById("inputTwo").value
-
-
-    total = Number(inputA) +Number(inputB);
-    document.getElementById("total").innerText = total
-    console.log(total)
-    
-}
-
-function subtraction(){
-    inputA = document.getElementById("inputOne").value
-    inputB = document.getElementById("inputTwo").value
-
-    total = inputA - inputB;
-    document.getElementById("total").innerText = total
-    console.log(total)
-    
-}
-
-function division(){
-    inputA = document.getElementById("inputOne").value
-    inputB = document.getElementById("inputTwo").value
-    total = inputA / inputB;
-    document.getElementById("total").innerText = total
-    console.log(total)
-}
-
-function multiplication(){
-    inputA = document.getElementById("inputOne").value
-    inputB = document.getElementById("inputTwo").value
-    
-    total = inputA * inputB;
-    document.getElementById("total").innerText = total
-    console.log(total)
-}
 function displayDelete(){
     let removed = numbersToCalculate.pop()
     document.getElementById("display").innerText = " " + numbersToCalculate.join(" ") 
@@ -68,18 +32,18 @@ function displayDelete(){
 function squared(abc){
     //This function used to calculate the squared
     const squareNum = 2
-    if(abc){
+    if(abc !== ""){
         tempEqual =  abc ** squareNum 
     }
 
     console.log(tempEqual)
     return tempEqual
     
- }
+}
 
 function squaredRoot(xyz){
     //This fucntion is used to calculate the squared root
-    if (xyz) {
+    if (xyz !== "") {
         temp = Math.sqrt(xyz)
     }
     console.log(temp)
@@ -171,18 +135,35 @@ function displayTotal(total) {
     total = 0;
 }
 
+/*
+function decimal_Place() {
+    inputA = document.getElementById("inputOne").value
+    inputB = document.getElementById("inputTwo").value
+    if(inputA.includes(".")){
+        parseFloat(inputA)
+        console.log(inputA)
+    } else if (inputB.includes(".")){
+        parseFloat(inputB)
+        console.log(inputB)
+    } else {
+        window.alert("Your not ")
+   }
+}
+*/
+
 function equal(e){
     //Here is where we can sort the array to solve the calculation
     console.log(e)
     //console.log(numbersToCalculate)
 
-    //Addition
     let firstNum = ""
     let secondNum = "" // second val after operator
     let opX = ""
     for (i=0; i < numbersToCalculate.length; i++) {
         //console.log(numbersToCalculate[i])
         valX = numbersToCalculate[i]
+        // check for a decimal point
+
         if (parseInt(valX) && opX.length == 0) {
             //console.log(numX)
             firstNum = firstNum + valX
@@ -242,16 +223,30 @@ function equal(e){
     displayTotal(total)
 
 }
-
 function handleButton(e){
     //Allows the button clicked to join together
-        numbersToCalculate.push(e.target.innerText)
-        console.log(e)
-        console.log(numbersToCalculate)
-        document.getElementById("display").innerText = numbersToCalculate.join(" ")
+    console.log(e)
     
+    if (e.target.innerText == ".") {
+        if (!dot_exists) {
+            dot_exists = true
+            console.log ("dot exists")
+        } else {
+            return
+        }
+    } else {
+        console.log ("hello")
+    }
 
+    numbersToCalculate.push(e.target.innerText)
+
+    if (numbersToCalculate[0] == ".") {
+        numbersToCalculate.unshift("0")
+    }
+    document.getElementById("display").innerText = numbersToCalculate.join(" ")
+    console.log(numbersToCalculate)
 }
+
 
 function handleMemoryButton(e){
     // hand
