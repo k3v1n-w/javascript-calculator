@@ -6,6 +6,7 @@ let m1 = 0
 let memo = 0
 let numbersToCalculate = []
 let dot_exists = false // flag to set to true whena decimal point is added
+let operator_exists = false // flag to set to true when an oprator is added
 let equal_pressed = false // flag to know when the forst = eval is executed
 let calc_functions_array = ['+','-','x','÷','!','Mr','Mc','M+','√','²','%','Del','=','C']
 console.log(m1)
@@ -120,7 +121,9 @@ function displayclear(e){
     // Function to handle Clear (C) event by emptying array and clear display
     numbersToCalculate = [];
     document.getElementById("display").innerText = ""
-    equal_pressed = false //release the flag to allow consecutive operations
+    equal_pressed = false //release the flags to allow consecutive operations
+    operator_exists = false
+    dot_exists = false
 }
 
 function displayTotal(total) {
@@ -147,7 +150,7 @@ function equal(e) {
             //console.log(numbersToCalculate[i])
             valX = numbersToCalculate[i]
 
-            if (parseInt(valX) && opX.length == 0) {
+            if (!isNaN(parseInt(valX)) && opX.length == 0) { // AI Help, Problem = 0 was seen as a false value so wasn't accepted, Solution added !isNan function to make it true
                 firstNum = firstNum + valX
             } else if (opX.length > 0) {
                 secondNum = secondNum + valX
@@ -220,19 +223,34 @@ function equal(e) {
 function handleButton(e){
     //Allows the button clicked to join the value to the array to build the number
     console.log(e)
+
+    // check if calc function is pressed and set flag if so
+    if (calc_functions_array.includes(e.target.innerText)) {
+        operator_exists = true
+    }
+
+    console.log ("Operator exists: " + operator_exists)
     
     if (e.target.innerText == ".") {
         if (!dot_exists) {
             dot_exists = true
             console.log ("dot exists")
         } else {
-            return
-
-            
-        }
+             if (operator_exists) {
+                 operator_exists = false
+                 //dot_exists = false
+                 console.log ("Operator found")
+             } else {
+                 return
+            }
+        } 
     } else {
-        dot_exists = false
-        console.log ("hello")
+        if (!dot_exists) {
+            //dot_exists = true
+            console.log ("dot exists 2")
+        } else {
+            console.log("hello")
+        }
     }
 
     numbersToCalculate.push(e.target.innerText)
