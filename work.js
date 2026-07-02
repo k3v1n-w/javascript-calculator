@@ -9,6 +9,7 @@ let dot_exists = false // flag to set to true whena decimal point is added
 let operator_exists = false // flag to set to true when an oprator is added
 let equal_pressed = false // flag to know when the forst = eval is executed
 let calc_functions_array = ['+','-','x','÷','!','Mr','Mc','M+','√','²','%','Del','=','C']
+var local_op_counter = 0
 console.log(m1)
 console.log("loaded javascript")
 
@@ -150,7 +151,7 @@ function equal(e) {
             //console.log(numbersToCalculate[i])
             valX = numbersToCalculate[i]
 
-            if (!isNaN(parseInt(valX)) && opX.length == 0) { // AI Help, Problem = 0 was seen as a false value so wasn't accepted, Solution added !isNan function to make it true
+            if (!isNaN(parseInt(valX)) && opX.length == 0) { 
                 firstNum = firstNum + valX
             } else if (opX.length > 0) {
                 secondNum = secondNum + valX
@@ -223,7 +224,7 @@ function equal(e) {
 function handleButton(e){
     //Allows the button clicked to join the value to the array to build the number
     console.log(e)
-
+    
     // check if calc function is pressed and set flag if so
     if (calc_functions_array.includes(e.target.innerText)) {
         operator_exists = true
@@ -239,11 +240,16 @@ function handleButton(e){
              if (operator_exists) {
                  operator_exists = false
                  //dot_exists = false
+                 
                  console.log ("Operator found")
              } else {
                  return
             }
         } 
+    } else if (operator_exists && local_op_counter == 0) {
+        local_op_counter ++
+        console.log("found operator:" + local_op_counter)
+        //return
     } else {
         if (!dot_exists) {
             //dot_exists = true
@@ -252,6 +258,7 @@ function handleButton(e){
             console.log("hello")
         }
     }
+
 
     numbersToCalculate.push(e.target.innerText)
 
