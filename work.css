@@ -40,6 +40,8 @@ body{
       margin-bottom: 20px;
       height: 90px;
       border-radius: 50px;
+      padding: 30px;
+      box-sizing: border-box;
 }
 
 .top-symbol-btns{

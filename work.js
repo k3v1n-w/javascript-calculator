@@ -10,6 +10,7 @@ let operator_exists = false // flag to set to true when an oprator is added
 let equal_pressed = false // flag to know when the forst = eval is executed
 let calc_functions_array = ['+','-','x','÷','!','Mr','Mc','M+','√','²','%','Del','=','C']
 var local_op_counter = 0
+let math_operators = ['+','-','x','÷','!','%']
 console.log(m1)
 console.log("loaded javascript")
 
@@ -246,9 +247,12 @@ function handleButton(e){
                  return
             }
         } 
-    } else if (operator_exists && local_op_counter == 0) {
-        local_op_counter ++
-        console.log("found operator:" + local_op_counter)
+    } else if (math_operators.includes(e.target.innerText)) {
+            if(operator_exists){
+                return;  
+            
+         operator_exists = true;
+            }
         //return
     } else {
         if (!dot_exists) {
