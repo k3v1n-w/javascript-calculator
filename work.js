@@ -168,7 +168,7 @@ function equal(e) {
             
         }
 
-        console.log(opX)
+        console.log(opX, "OPX")
         console.log(firstNum)
         console.log(secondNum)
     
@@ -248,10 +248,15 @@ function handleButton(e){
             }
         } 
     } else if (math_operators.includes(e.target.innerText)) {
+
+            //ma
+            numbersToCalculate.push(e.target.innerText)
+            document.getElementById("display").innerText = numbersToCalculate.join(" ")
+
             if(operator_exists){
                 return;  
             
-         operator_exists = true;
+        //  operator_exists = true;
             }
         //return
     } else {
@@ -271,6 +276,13 @@ function handleButton(e){
     }
     document.getElementById("display").innerText = numbersToCalculate.join(" ")
     console.log(numbersToCalculate)
+
+    //Next Task! 
+    //How to stop operators adding to the numbersToCalculate array more than once:
+    //Rethink the maths operator if statement, and buidk a logic that will identify the operator, 
+    // but will not allow you to add the two or more operators next each other.
+    //Sabrina 
+
 }
 
 
