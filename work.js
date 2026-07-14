@@ -227,13 +227,14 @@ function handleButton(e){
     console.log(e)
     
     // check if calc function is pressed and set flag if so
-    if (calc_functions_array.includes(e.target.innerText)) {
-        operator_exists = true
-    }
+    // if (calc_functions_array.includes(e.target.innerText)) {
+    //     operator_exists = true
+    // }
 
     console.log ("Operator exists: " + operator_exists)
     
     if (e.target.innerText == ".") {
+        //handle decimal
         if (!dot_exists) {
             dot_exists = true
             console.log ("dot exists")
@@ -247,13 +248,11 @@ function handleButton(e){
                  return
             }
         } 
-    } else if (math_operators.includes(e.target.innerText)) {
+    } else if (math_operators.includes(e.target.innerText)) { //else handle operator
             if(operator_exists){
                 return;  
-            
-         operator_exists = true;
             }
-        //return
+            operator_exists = true;
     } else {
         if (!dot_exists) {
             //dot_exists = true
